@@ -84,3 +84,28 @@ def get_history():
             "risk_score": row[6]
         })
     return {"history": history}
+@app.get("/storm-replay")
+def get_storm_replay():
+    storm_data = [
+        {"time": "May 10 06:00", "kp": 3, "wind_speed": 650, "risk_score": 4.2, "risk_level": "MODERATE"},
+        {"time": "May 10 08:00", "kp": 5, "wind_speed": 720, "risk_score": 6.5, "risk_level": "HIGH"},
+        {"time": "May 10 10:00", "kp": 7, "wind_speed": 780, "risk_score": 8.0, "risk_level": "HIGH"},
+        {"time": "May 10 12:00", "kp": 8, "wind_speed": 850, "risk_score": 9.0, "risk_level": "HIGH"},
+        {"time": "May 10 14:00", "kp": 9, "wind_speed": 900, "risk_score": 10.0, "risk_level": "HIGH"},
+        {"time": "May 10 16:00", "kp": 8, "wind_speed": 820, "risk_score": 9.0, "risk_level": "HIGH"},
+        {"time": "May 10 18:00", "kp": 7, "wind_speed": 750, "risk_score": 7.5, "risk_level": "HIGH"},
+        {"time": "May 10 20:00", "kp": 6, "wind_speed": 680, "risk_score": 6.5, "risk_level": "HIGH"},
+        {"time": "May 10 22:00", "kp": 5, "wind_speed": 620, "risk_score": 5.5, "risk_level": "MODERATE"},
+        {"time": "May 11 00:00", "kp": 4, "wind_speed": 550, "risk_score": 4.0, "risk_level": "MODERATE"},
+        {"time": "May 11 06:00", "kp": 3, "wind_speed": 480, "risk_score": 3.0, "risk_level": "MODERATE"},
+        {"time": "May 11 12:00", "kp": 2, "wind_speed": 420, "risk_score": 2.0, "risk_level": "LOW"},
+        {"time": "May 11 18:00", "kp": 1, "wind_speed": 380, "risk_score": 1.5, "risk_level": "LOW"},
+    ]
+    return {
+        "event": "May 2024 Solar Storm - G5 Class",
+        "description": "Strongest geomagnetic storm in 20 years. Kp reached 9/9. GPS errors exceeded 50 metres globally.",
+        "peak_kp": 9,
+        "peak_wind_speed": 900,
+        "duration_hours": 36,
+        "data": storm_data
+    }
